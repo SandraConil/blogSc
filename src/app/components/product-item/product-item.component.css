@@ -1,0 +1,29 @@
+:root {
+    --color-pink : rgb(139, 5, 90);
+    --color-grey : rgb(160, 152, 156);
+}
+/* quand on survole, ca change le container product */
+.product-item:hover {
+    background-color: var(--color-pink);
+    color:white;
+    transition: ease 1s;
+}
+
+.product-item{
+    text-align: center;
+    border: 0.6px solid rgb(230, 8, 148);
+    background-color: var(--color-grey);
+    width: 400px;
+    height: 500px;
+    color: rgb(2, 2, 2);
+    cursor: pointer; /*pour indiquer qu on peut cliquer */
+    font-size: 1.4rem;
+
+}
+
+.product-price{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+   justify-content: center;
+}

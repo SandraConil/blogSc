@@ -1,0 +1,28 @@
+<div class="product-list">
+
+    <!-- la boucle ngFor me permet de mettre que une fois le app.product-item. a chaque fois que je vais rajouter un tableau product , il va se mettre seul . on automatise les actions-->
+
+        <app-product-item
+        *ngFor="let product of products" 
+        [product]="product"
+        (deleteProductItem)="handleDeleteProduct($event)"
+        
+        (displayProductViewModal)="handledisplayProductViewModal($event)">
+
+    </app-product-item>
+
+        <!-- ngIf permet de mettre une condition si le tableau est vide , je mets en message : desolé aucun article n'est disponible -->
+        <div class="bar" *ngIf="!products.length">
+            Désolé, aucun article n'est disponible pour le moment.
+        </div>
+        
+
+    <app-modal-product-view 
+    *ngIf="isDisplayModal && modalProduct"
+    [product]="modalProduct"
+    (close)="handleCloseModal()">
+    </app-modal-product-view> 
+
+
+</div>
+

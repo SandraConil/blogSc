@@ -1,0 +1,22 @@
+<div class="product-item" (click)="deleteProduct(product)">
+    <div class="product-image">
+        <img [src]="product ? product.image: '' "
+        height="300px"
+        width="400px"
+        [alt]="product?.name">
+    </div>
+    <div class="product-details">
+        <div class="product-name">
+
+            <p>{{product?.name}} </p>
+            <p>{{product?.description}} </p>
+        </div>
+        <div class="product-price">
+            <p>{{(product?.sold_prix || 0) /100}} €</p>
+            <del>
+                <p>{{(product?.prix ||0) /100}} €</p>
+            </del>
+        </div>
+    </div>
+</div>
+       
