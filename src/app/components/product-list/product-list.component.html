@@ -5,23 +5,30 @@
         <app-product-item
         *ngFor="let product of products" 
         [product]="product"
-        (deleteProductItem)="handleDeleteProduct($event)"
+       (click)="afficheModale()"
         
         (displayProductViewModal)="handledisplayProductViewModal($event)">
-
     </app-product-item>
 
-        <!-- ngIf permet de mettre une condition si le tableau est vide , je mets en message : desolé aucun article n'est disponible -->
-        <div class="bar" *ngIf="!products.length">
-            Désolé, aucun article n'est disponible pour le moment.
-        </div>
-        
+    <!-- (deleteProductItem)="handleDeleteProduct($event)" -->
+    <!-- ngIf permet de mettre une condition si le tableau est vide , je mets en message : desolé aucun article n'est disponible -->
+    <div class="bar" *ngIf="!products.length">
+        Désolé, aucun article n'est disponible pour le moment.
+    </div>
+    
+    <!-- je mets en place mon modal -->
+      <app-modal-product-view 
+      *ngIf="toto"
+      [product]="modalProduct"
+    >
+      </app-modal-product-view> 
 
-    <app-modal-product-view 
-    *ngIf="isDisplayModal && modalProduct"
-    [product]="modalProduct"
-    (close)="handleCloseModal()">
-    </app-modal-product-view> 
+      <!-- <app-modal-product-view 
+      *ngIf="isDisplayModal && modalProduct"
+      [product]="modalProduct"
+      (close)="handleCloseModal()">
+      </app-modal-product-view>  -->
+
 
 
 </div>

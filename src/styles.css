@@ -38,7 +38,7 @@ body {
     outline: none;
     min-width: 150px;
     background-color: var(--color-pink);
-    color: white;
+    color: rgb(161, 158, 160);
     padding: 10px 0;
     margin: 10px 0;
     cursor: pointer;

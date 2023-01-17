@@ -1,13 +1,17 @@
 <div class="modal-product-view">
     <div class="overlay"></div>
     <div class="modal-product-view-container flex-1 ">
-        <div class="modal-image"></div>
-        <img 
-        [src]="product ? product.image[0] : '' " 
-        [alt]="product?.name">
+        <div class="modal-product-view-image flex-1">
+            <img 
+            [src]="product ? product.image : '' " 
+            [alt]="product?.name">
+        </div>
+
         <div class="modal-product-view-details flex-1">
             <h2>{{product?.name}} </h2>
-            <div class="modal-product-price">
+            <p>{{product?.description}} </p>
+            
+           <div class="modal-product-price">
                 <p>{{(product?.sold_prix || 0)/100}} €</p>
                 <del>
                     <p>{{(product?.prix || 0)/100}} €</p>

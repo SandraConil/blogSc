@@ -31,5 +31,7 @@ export class ProductItemComponent implements OnInit{
     this.deleteProductItem.emit(product)
   }
 
+  
+
  
  }

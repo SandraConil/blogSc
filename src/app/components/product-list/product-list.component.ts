@@ -1,5 +1,6 @@
 import { getNumberOfCurrencyDigits } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../../models/product';
 
 
@@ -13,129 +14,16 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = []
 
-  isDisplayModal:boolean = false
+  isDisplayModal: boolean = false
   modalProduct: Product | undefined
+toto : boolean =false
 
-  constructor(){}
+//je lui injecte mon service de mes produits donc ca se fait dans le constructor en lui mettant n'importe quel nom et je lui met un type ProductService et voila là c'est injecter. Jevais avoir sur ma page tout mes produits seront partis donc maintenant dans ngOnInit je dois lui mettre this.produtService. et là on ne me propose pas ma methode car dans mon fichier services/product.services j'ai private donc je dois mettre getProducts pour récuperer mees produits avec les parenthese car c'est une méthode.
+  constructor(private productService : ProductService ){}
 
   ngOnInit(): void {
-    this.products = [
-      {
-        _id : '123',
-          name : 'Grossesse',
-          description : 'Séance à domicile lors de votre grossesse',
-          categorie : ['Adultes', 'Famille'],
-          image : 'assets/images/products/couple2.jpg',
-          prix : 15000,
-          sold_prix : 11500,
-      },
-      {
-        _id : '456',
-          name : 'Bebe',
-          description : 'Séance à domicile de votre bout de choux',
-          categorie : ['Enfant', 'Famille'],
-          image : 'assets/images/products/bebe1.jpg',
-          prix : 9500,
-          sold_prix : 8000,
-      },
-  
-      {
-        _id : '789',
-          name : 'Enfant',
-          description : 'Séance à domicile de votre loulou',
-          categorie : ['Enfant', 'Famille'],
-          image : 'assets/images/products/enfant2.jpg',
-          prix : 9500,
-          sold_prix : 8000,
-      },
-      {
-        _id : '112',
-        name : 'Grossesse',
-        description : 'Séance à domicile lors de votre grossesse',
-        categorie : ['Adultes', 'Famille'],
-        image : 'assets/images/products/couple2.jpg',
-        prix : 15000,
-        sold_prix : 11500,
-    },
-    {
-      _id : '666',
-        name : 'Bebe',
-        description : 'Séance à domicile de votre bout de choux',
-        categorie : ['Enfant', 'Famille'],
-        image : 'assets/images/products/bebe2.jpg',
-        prix : 9500,
-        sold_prix : 8000,
-    },
-
-    {
-      _id : '777',
-        name : 'Enfant',
-        description : 'Séance à domicile de votre loulou',
-        categorie : ['Enfant', 'Famille'],
-        image : 'assets/images/products/enfant4.jpg',
-        prix : 9500,
-        sold_prix : 8000,
-    },
-    {
-      _id : '999',
-      name : 'Grossesse',
-      description : 'Séance à domicile lors de votre grossesse',
-      categorie : ['Adultes', 'Famille'],
-      image : 'assets/images/products/couple1.jpg',
-      prix : 15000,
-      sold_prix : 11500,
-  },
-  {
-    _id : '587',
-      name : 'Bebe',
-      description : 'Séance à domicile de votre bout de choux',
-      categorie : ['Enfant', 'Famille'],
-      image : 'assets/images/products/bebe3.jpg',
-      prix : 9500,
-      sold_prix : 8000,
-  },
-
-  {
-    _id : '321',
-      name : 'Enfant',
-      description : 'Séance à domicile de votre loulou',
-      categorie : ['Enfant', 'Famille'],
-      image : 'assets/images/products/enfant5.jpg',
-      prix : 9500,
-      sold_prix : 8000,
-  },
-  {
-    _id : '12354',
-    name : 'Grossesse',
-    description : 'Séance à domicile lors de votre grossesse',
-    categorie : ['Adultes', 'Famille'],
-    image : 'assets/images/products/couple3.jpg',
-    prix : 15000,
-    sold_prix : 11500,
-},
-{
-  _id : '89123',
-    name : 'Bebe',
-    description : 'Séance à domicile de votre bout de choux',
-    categorie : ['Enfant', 'Famille'],
-    image : 'assets/images/products/bebe3.jpg',
-    prix : 9500,
-    sold_prix : 8000,
-},
-
-{
-  _id : '1273',
-    name : 'Enfant',
-    description : 'Séance à domicile de votre loulou',
-    categorie : ['Enfant', 'Famille'],
-    image : 'assets/images/products/enfant2.jpg',
-    prix : 9500,
-    sold_prix : 8000,
-},
-  
-  ]
- 
-  }
+    this.products = this.productService.getProducts()
+   }
 
   handleDeleteProduct(product: Product){
     this.products = this.products.filter(p => p._id !== product._id)
@@ -144,7 +32,7 @@ export class ProductListComponent implements OnInit {
   handledisplayProductViewModal(product: Product){
     if(product){
     this.isDisplayModal = true
-    this.modalProduct =product
+    this.modalProduct = product
     }
 
 }
@@ -153,4 +41,10 @@ handleCloseModal(){
   this.isDisplayModal = false
     this.modalProduct = undefined
 }
+
+afficheModale(){
+  //si toto est vrai alors j'affiche ma modale sinon je ne l'affiche pas
+this.toto = !this.toto
+}
+
 }
