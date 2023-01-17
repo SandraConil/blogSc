@@ -47,4 +47,9 @@ afficheModale(){
 this.toto = !this.toto
 }
 
+//pour fermer mon modal
+close(resultat:boolean){
+  this.toto = resultat
+}
+
 }

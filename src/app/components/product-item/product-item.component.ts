@@ -27,11 +27,6 @@ export class ProductItemComponent implements OnInit{
     this.displayProductViewModal.emit(product)
   }
 
-  deleteProduct(product: Product |undefined){
-    this.deleteProductItem.emit(product)
-  }
-
   
-
  
  }

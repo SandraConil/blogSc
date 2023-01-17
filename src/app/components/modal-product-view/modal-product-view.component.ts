@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { ProductListComponent } from '../product-list/product-list.component';
+
 
 @Component({
   selector: 'app-modal-product-view',
@@ -11,7 +11,10 @@ export class ModalProductViewComponent implements OnInit {
 
   @Input() product: Product | undefined
   @Output() close : EventEmitter<string> = new EventEmitter<string>()
-  femer : boolean = false
+
+  // pour fermer ma modale
+ @Output()fermeModal :EventEmitter<boolean> = new EventEmitter()
+  
 
   constructor(){}
 
@@ -20,7 +23,7 @@ export class ModalProductViewComponent implements OnInit {
   }
 
   closeModal(){
-    this.femer = !this.femer
+    this.fermeModal.emit(false)
   }
 
 }

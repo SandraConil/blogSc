@@ -16,10 +16,11 @@
         Désolé, aucun article n'est disponible pour le moment.
     </div>
     
-    <!-- je mets en place mon modal -->
+    <!-- je mets en place mon modal et la methode pour la fermer en lui mettant le $evenr-->
       <app-modal-product-view 
       *ngIf="toto"
       [product]="modalProduct"
+      (fermeModal)="close($event)"
     >
       </app-modal-product-view> 
 
